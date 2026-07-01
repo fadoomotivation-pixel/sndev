@@ -1,12 +1,12 @@
 const NOTIFICATIONS = [
-  { name: 'Rahul Sharma',    city: 'Delhi',      size: '50 Sq. Yd', project: 'Shree Ji Vatika', price: '₹4.50L', emoji: '🏠', ago: '2 hours ago' },
-  { name: 'Sangeeta Devi',   city: 'Agra',       size: '60 Sq. Yd', project: 'Shree Ji Vatika', price: '₹5.40L', emoji: '🏠', ago: 'Just now' },
-  { name: 'Mukesh Gupta',    city: 'Noida',      size: '100 Sq. Yd',project: 'Shree Ji Vatika', price: '₹9.00L', emoji: '🏠', ago: '3 hours ago' },
-  { name: 'Sunita Rani',     city: 'Lucknow',    size: '50 Sq. Yd', project: 'Shree Ji Vatika', price: '₹4.50L', emoji: '🏠', ago: 'Today morning' },
-  { name: 'Pradeep Verma',   city: 'Mathura',    size: '150 Sq. Yd',project: 'Shree Ji Vatika', price: '₹13.50L', emoji: '🏠', ago: '1 day ago' },
-  { name: 'Kamla Devi',      city: 'Jaipur',     size: '60 Sq. Yd', project: 'Shree Ji Vatika', price: '₹5.40L', emoji: '🏠', ago: '5 hours ago' },
-  { name: 'Suresh Kumar',    city: 'Gurugram',   size: '100 Sq. Yd',project: 'Shree Ji Vatika', price: '₹9.00L', emoji: '🏠', ago: 'Yesterday' },
-  { name: 'Neetu Singh',     city: 'Faridabad',  size: '50 Sq. Yd', project: 'Shree Ji Vatika', price: '₹4.50L', emoji: '🏠', ago: '4 hours ago' }
+  { name: 'Rahul Sharma',    city: 'Delhi',      size: '50 Sq. Yd', project: 'Shree Jee Vatika', price: '₹8.00L', emoji: '🏠', ago: '2 hours ago' },
+  { name: 'Sangeeta Devi',   city: 'Agra',       size: '97.25 Sq. Yd', project: 'Shree Jee Vatika', price: '₹15.52L', emoji: '🏠', ago: 'Just now' },
+  { name: 'Mukesh Gupta',    city: 'Noida',      size: '100 Sq. Yd',project: 'Shree Jee Vatika', price: '₹16.00L', emoji: '🏠', ago: '3 hours ago' },
+  { name: 'Sunita Rani',     city: 'Lucknow',    size: '50 Sq. Yd', project: 'Shree Jee Vatika', price: '₹8.00L', emoji: '🏠', ago: 'Today morning' },
+  { name: 'Pradeep Verma',   city: 'Mathura',    size: '150 Sq. Yd',project: 'Shree Jee Vatika', price: '₹24.00L', emoji: '🏠', ago: '1 day ago' },
+  { name: 'Kamla Devi',      city: 'Jaipur',     size: '236 Sq. Yd', project: 'Shree Jee Vatika', price: '₹37.76L', emoji: '🏠', ago: '5 hours ago' },
+  { name: 'Suresh Kumar',    city: 'Gurugram',   size: '100 Sq. Yd',project: 'Shree Jee Vatika', price: '₹16.00L', emoji: '🏠', ago: 'Yesterday' },
+  { name: 'Neetu Singh',     city: 'Faridabad',  size: '50 Sq. Yd', project: 'Shree Jee Vatika', price: '₹8.00L', emoji: '🏠', ago: '4 hours ago' }
 ];
 
 const CFG = {
@@ -36,16 +36,16 @@ const style = document.createElement('style');
 style.textContent = `
   .sp-card {
     background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
     overflow: hidden;
-    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-family: 'Inter', sans-serif;
     position: relative;
     border: 1px solid rgba(0,0,0,0.05);
-    width: 280px;
+    width: 300px;
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity 0.4s ease, transform 0.4s ease;
+    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: all;
   }
   
@@ -56,7 +56,7 @@ style.textContent = `
 
   .sp-accent {
     height: 4px;
-    background: linear-gradient(90deg, #0F3A5F, #D4AF37);
+    background: linear-gradient(90deg, #12151A, #D4AF37);
   }
 
   .sp-close {
@@ -65,20 +65,21 @@ style.textContent = `
     right: 8px;
     background: none;
     border: none;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
     color: #9ca3af;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.2s;
   }
-  .sp-close:hover { background: #f3f4f6; color: #374151; }
+  .sp-close:hover { background: #f3f4f6; color: #12151A; }
 
   .sp-body {
-    padding: 12px;
+    padding: 16px;
   }
 
   .sp-top {
@@ -86,68 +87,72 @@ style.textContent = `
     align-items: center;
     gap: 6px;
     margin-bottom: 8px;
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 600;
   }
   
-  .sp-proj { color: #0F3A5F; }
+  .sp-proj { color: #12151A; font-family: 'Outfit', sans-serif;}
   .sp-ago { color: #9ca3af; font-weight: normal; }
 
   .sp-msg {
-    font-size: 13px;
-    color: #374151;
-    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #4b5563;
+    margin: 0 0 12px 0;
+    line-height: 1.4;
   }
 
   .sp-msg strong {
-    color: #111827;
+    color: #12151A;
   }
 
   .sp-detail {
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
   }
 
   .sp-chip {
-    background: #EFF6FF;
-    color: #0F3A5F;
-    padding: 3px 8px;
-    border-radius: 4px;
-    font-size: 11px;
-    font-weight: 700;
+    background: #fdfaf4;
+    color: #D4AF37;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
   }
 
   .sp-price {
-    font-size: 14px;
-    font-weight: 800;
-    color: #15803d;
+    font-size: 16px;
+    font-weight: 700;
+    color: #12151A;
+    font-family: 'Outfit', sans-serif;
   }
 
   .sp-foot {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 8px 12px;
-    border-top: 1px solid #f3f4f6;
+    padding: 12px 16px;
+    border-top: 1px solid rgba(0,0,0,0.05);
     background: #fafafa;
   }
   
   .sp-foot-text {
-    font-size: 10px;
+    font-size: 12px;
     color: #6b7280;
   }
   
   .sp-wa-btn {
-    background: #16a34a;
+    background: #12151A;
     color: #fff;
     text-decoration: none;
-    padding: 4px 12px;
+    padding: 6px 14px;
     border-radius: 6px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 600;
+    transition: all 0.3s;
   }
-  .sp-wa-btn:hover { background: #15803d; }
+  .sp-wa-btn:hover { background: #D4AF37; color: #12151A; }
 `;
 document.head.appendChild(style);
 
@@ -158,7 +163,22 @@ function showNextNotification() {
   }
   
   const data = notificationPool[poolIndex++];
-  const container = document.getElementById('toast-container');
+  // We check if toast-container exists because we overwrote index.html. Wait, did I keep toast-container in index.html?
+  // I need to make sure index.html has #toast-container
+  let container = document.getElementById('toast-container');
+  if(!container) {
+    container = document.createElement('div');
+    container.id = 'toast-container';
+    container.style.position = 'fixed';
+    container.style.bottom = '20px';
+    container.style.left = '20px';
+    container.style.zIndex = '99999';
+    container.style.display = 'flex';
+    container.style.flexDirection = 'column';
+    container.style.gap = '10px';
+    container.style.pointerEvents = 'none';
+    document.body.appendChild(container);
+  }
   
   // Clear any existing toasts
   container.innerHTML = '';
@@ -218,3 +238,29 @@ function showNextNotification() {
 
 // Start notifications loop
 setTimeout(showNextNotification, CFG.initialDelay);
+
+
+// ==========================================
+// Intersection Observer for Scroll Animations
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+  const animatedElements = document.querySelectorAll('[data-aos]');
+  
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+  
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('aos-animate');
+        // Optional: stop observing once animated
+        // observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  animatedElements.forEach(el => observer.observe(el));
+});
