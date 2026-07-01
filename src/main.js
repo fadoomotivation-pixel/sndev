@@ -1,5 +1,3 @@
-import './styles.css';
-
 const amenities = [
   'Gated plotted development', 'Wide internal roads (20 & 40 ft)', 
   'Club House & Swimming Pool', 'Green landscape & Parks',
