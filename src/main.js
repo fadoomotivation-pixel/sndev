@@ -31,78 +31,80 @@ function shuffle(arr) {
 let notificationPool = shuffle(NOTIFICATIONS);
 let poolIndex = 0;
 
-// CSS for the toast injected dynamically
+// CSS for the Dark Cinematic Toast
 const style = document.createElement('style');
 style.textContent = `
   .sp-card {
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    background: rgba(10, 10, 10, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
     overflow: hidden;
     font-family: 'Inter', sans-serif;
     position: relative;
-    border: 1px solid rgba(0,0,0,0.05);
-    width: 300px;
+    width: 320px;
     opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(30px) scale(0.95);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     pointer-events: all;
   }
   
   .sp-card.show {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 
   .sp-accent {
-    height: 4px;
-    background: linear-gradient(90deg, #12151A, #D4AF37);
+    height: 3px;
+    background: linear-gradient(90deg, #b38728, #fbf5b7, #aa771c);
   }
 
   .sp-close {
     position: absolute;
-    top: 8px;
-    right: 8px;
-    background: none;
+    top: 12px;
+    right: 12px;
+    background: rgba(255,255,255,0.05);
     border: none;
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 28px;
     cursor: pointer;
-    font-size: 14px;
-    color: #9ca3af;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.2s;
+    transition: all 0.3s;
   }
-  .sp-close:hover { background: #f3f4f6; color: #12151A; }
+  .sp-close:hover { background: rgba(255,255,255,0.1); color: #fff; }
 
   .sp-body {
-    padding: 16px;
+    padding: 20px;
   }
 
   .sp-top {
     display: flex;
     align-items: center;
-    gap: 6px;
-    margin-bottom: 8px;
+    gap: 8px;
+    margin-bottom: 12px;
     font-size: 12px;
     font-weight: 600;
   }
   
-  .sp-proj { color: #12151A; font-family: 'Outfit', sans-serif;}
-  .sp-ago { color: #9ca3af; font-weight: normal; }
+  .sp-proj { color: #D4AF37; font-family: 'Outfit', sans-serif; letter-spacing: 1px; text-transform: uppercase;}
+  .sp-ago { color: rgba(255,255,255,0.4); font-weight: normal; }
 
   .sp-msg {
-    font-size: 14px;
-    color: #4b5563;
-    margin: 0 0 12px 0;
-    line-height: 1.4;
+    font-size: 15px;
+    color: rgba(255,255,255,0.8);
+    margin: 0 0 16px 0;
+    line-height: 1.5;
   }
 
   .sp-msg strong {
-    color: #12151A;
+    color: #fff;
   }
 
   .sp-detail {
@@ -112,47 +114,40 @@ style.textContent = `
   }
 
   .sp-chip {
-    background: #fdfaf4;
+    background: rgba(212, 175, 55, 0.1);
     color: #D4AF37;
-    border: 1px solid rgba(212, 175, 55, 0.3);
-    padding: 4px 10px;
-    border-radius: 6px;
-    font-size: 12px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    padding: 6px 12px;
+    border-radius: 8px;
+    font-size: 13px;
     font-weight: 600;
-  }
-
-  .sp-price {
-    font-size: 16px;
-    font-weight: 700;
-    color: #12151A;
-    font-family: 'Outfit', sans-serif;
   }
 
   .sp-foot {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 12px 16px;
-    border-top: 1px solid rgba(0,0,0,0.05);
-    background: #fafafa;
+    padding: 16px 20px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+    background: rgba(0,0,0,0.3);
   }
   
   .sp-foot-text {
-    font-size: 12px;
-    color: #6b7280;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
   }
   
   .sp-wa-btn {
-    background: #12151A;
-    color: #fff;
+    background: #D4AF37;
+    color: #000;
     text-decoration: none;
-    padding: 6px 14px;
-    border-radius: 6px;
+    padding: 8px 16px;
+    border-radius: 8px;
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     transition: all 0.3s;
   }
-  .sp-wa-btn:hover { background: #D4AF37; color: #12151A; }
+  .sp-wa-btn:hover { background: #fbf5b7; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3); }
 `;
 document.head.appendChild(style);
 
@@ -163,24 +158,21 @@ function showNextNotification() {
   }
   
   const data = notificationPool[poolIndex++];
-  // We check if toast-container exists because we overwrote index.html. Wait, did I keep toast-container in index.html?
-  // I need to make sure index.html has #toast-container
   let container = document.getElementById('toast-container');
   if(!container) {
     container = document.createElement('div');
     container.id = 'toast-container';
     container.style.position = 'fixed';
-    container.style.bottom = '20px';
-    container.style.left = '20px';
+    container.style.bottom = '32px';
+    container.style.left = '32px';
     container.style.zIndex = '99999';
     container.style.display = 'flex';
     container.style.flexDirection = 'column';
-    container.style.gap = '10px';
+    container.style.gap = '16px';
     container.style.pointerEvents = 'none';
     document.body.appendChild(container);
   }
   
-  // Clear any existing toasts
   container.innerHTML = '';
   
   const waText = `I am interested in ${data.size} plot in ${data.project}`;
@@ -195,7 +187,7 @@ function showNextNotification() {
       <div class="sp-top">
         <span>${data.emoji}</span>
         <span class="sp-proj">${data.project}</span>
-        <span style="color:#d1d5db">•</span>
+        <span style="color: rgba(255,255,255,0.2)">•</span>
         <span class="sp-ago">${data.ago}</span>
       </div>
       <p class="sp-msg">
@@ -206,31 +198,28 @@ function showNextNotification() {
       </div>
     </div>
     <div class="sp-foot">
-      <span class="sp-foot-text">Want to book yours?</span>
-      <a href="${waUrl}" target="_blank" class="sp-wa-btn">💬 Inquire</a>
+      <span class="sp-foot-text">Join the community</span>
+      <a href="${waUrl}" target="_blank" class="sp-wa-btn">Inquire Now</a>
     </div>
   `;
   
   container.appendChild(card);
   
-  // Trigger animation
   requestAnimationFrame(() => {
     requestAnimationFrame(() => {
       card.classList.add('show');
     });
   });
   
-  // Remove after displayDuration
   setTimeout(() => {
     card.classList.remove('show');
     setTimeout(() => {
       if (container.contains(card)) {
         card.remove();
       }
-    }, 400); // Wait for transition
+    }, 500);
   }, CFG.displayDuration);
   
-  // Schedule next
   const nextDelay = rand(CFG.minInterval, CFG.maxInterval);
   setTimeout(showNextNotification, nextDelay);
 }
@@ -255,11 +244,35 @@ document.addEventListener('DOMContentLoaded', () => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('aos-animate');
-        // Optional: stop observing once animated
-        // observer.unobserve(entry.target);
       }
     });
   }, observerOptions);
   
   animatedElements.forEach(el => observer.observe(el));
+
+
+  // ==========================================
+  // Vanilla JS 3D Tilt Effect
+  // ==========================================
+  const tiltElements = document.querySelectorAll('.tilt-card');
+  
+  tiltElements.forEach(el => {
+    el.addEventListener('mousemove', e => {
+      const rect = el.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const tiltX = (y - centerY) / 20;
+      const tiltY = (centerX - x) / 20;
+      
+      el.style.transform = `perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+    
+    el.addEventListener('mouseleave', () => {
+      el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    });
+  });
 });
