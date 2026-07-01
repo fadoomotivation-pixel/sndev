@@ -1,17 +1,155 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-IN">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Commercial and residential plots at Shree Ji Vatika by SN Developers." />
+    <meta name="description" content="S N Developers builds its name by delivering remarkable projects in the real estate market." />
     <title>Shree Ji Vatika | SN Developers</title>
+    
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="/src/styles.css">
   </head>
   <body>
-    <div id="root"></div>
+    <!-- Top Header -->
+    <header class="header">
+      <div class="header-container">
+        <div class="logo">
+          <h1>SN DEVELOPERS</h1>
+        </div>
+        <nav class="nav-links">
+          <a href="#about">About Us</a>
+          <a href="#projects">Facilities</a>
+          <a href="#founders">Founders</a>
+          <a href="#location">Location</a>
+        </nav>
+        <a href="https://wa.me/918076146988" class="btn-primary" target="_blank">Contact Us</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero Section -->
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <div class="badge">Approved Projects</div>
+          <h1>Shree Ji Vatika</h1>
+          <p class="hero-subtitle">Premium Real Estate by SN Developers. 10+ Years of Trust & Reliability in building your dreams.</p>
+          <div class="hero-actions">
+            <a href="#about" class="btn-primary">Learn More</a>
+            <a href="https://wa.me/918076146988" class="btn-outline" target="_blank">Book Site Visit</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- About Us -->
+      <section class="about section" id="about">
+        <div class="container">
+          <div class="section-header">
+            <h2>About Us</h2>
+            <p>10+ Years Experience In Real Estate Projects</p>
+          </div>
+          <div class="about-content">
+            <p><strong>S N Developers</strong> is a leading real estate organization established in 2010 by Mr. Nitin Bhati and Rahul Goud, who has over 15+ years of experience in real estate market. S N Developers builds its name by delivering remarkable projects in the real estate market.</p>
+            <p>Over these years, the company has earned a unique combination of quality, value, trust & reliability. At S N Developers we're passionate about helping you achieve your real estate dreams. we have the expertise and dedication to guide you through every step of the process.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Why Choose Us / Facilities -->
+      <section class="facilities section bg-light" id="projects">
+        <div class="container">
+          <div class="section-header">
+            <h2>Why Choose Us</h2>
+            <p>Our Projects Facilities</p>
+          </div>
+          <div class="facilities-grid">
+            <div class="facility-card">✅ <span>Approved Projects</span></div>
+            <div class="facility-card">🛣️ <span>Near NH-24</span></div>
+            <div class="facility-card">🚆 <span>Near Metro Station</span></div>
+            <div class="facility-card">🏫 <span>Near School & Colleges</span></div>
+            <div class="facility-card">🅿️ <span>Parking Location</span></div>
+            <div class="facility-card">⚡ <span>24 Hours Electricity</span></div>
+            <div class="facility-card">💧 <span>24 Hours Water Supply</span></div>
+            <div class="facility-card">🛒 <span>Near Shoping Markets</span></div>
+            <div class="facility-card">🏥 <span>Near Hospitals</span></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Founders Section -->
+      <section class="founders section" id="founders">
+        <div class="container">
+          <div class="section-header">
+            <h2>Meet Our Founders</h2>
+            <p>The Visionaries Behind SN Developers</p>
+          </div>
+          <div class="founders-grid">
+            <div class="founder-card">
+              <div class="founder-image-wrapper">
+                <img src="/images/nitin_bhati.png" alt="Mr. Nitin Bhati" class="founder-img" onerror="this.src='https://via.placeholder.com/300x300?text=Nitin+Bhati'">
+              </div>
+              <h3>Mr. Nitin Bhati</h3>
+              <p>Founder & Director</p>
+            </div>
+            <div class="founder-card">
+              <div class="founder-image-wrapper">
+                <img src="/images/rahul_bhati.jpg" alt="Mr. Rahul Goud" class="founder-img" onerror="this.src='https://via.placeholder.com/300x300?text=Rahul+Goud'">
+              </div>
+              <h3>Mr. Rahul Goud</h3>
+              <p>Founder & Director</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Location Section -->
+      <section class="location section bg-light" id="location">
+        <div class="container">
+          <div class="section-header">
+            <h2>Project Location</h2>
+            <p>Find Shree Ji Vatika Easily</p>
+          </div>
+          <div class="map-container">
+            <!-- Using simple iframe embed for coords: 27.641441, 77.488289 -->
+            <iframe 
+              src="https://maps.google.com/maps?q=27.641441,77.488289&hl=en&z=14&amp;output=embed" 
+              width="100%" 
+              height="450" 
+              style="border:0; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" 
+              allowfullscreen="" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <h3>SN Developers</h3>
+            <p>Building Trust, Delivering Value.</p>
+          </div>
+          <div class="footer-contact">
+            <p>📞 +91 8076146988</p>
+            <p>📍 Shree Ji Vatika</p>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>&copy; 2026 SN Developers. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Social Proof Toast Container -->
+    <div id="toast-container"></div>
+
     <script type="module" src="/src/main.js"></script>
   </body>
 </html>

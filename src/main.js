@@ -1,131 +1,220 @@
-const amenities = [
-  'Gated plotted development', 'Wide internal roads (20 & 40 ft)', 
-  'Club House & Swimming Pool', 'Green landscape & Parks',
-  'Planned drainage & Sewer', 'Commercial & Residential Plots', 
-  '24x7 Security System', 'Peaceful environment'
+const NOTIFICATIONS = [
+  { name: 'Rahul Sharma',    city: 'Delhi',      size: '50 Sq. Yd', project: 'Shree Ji Vatika', price: '₹4.50L', emoji: '🏠', ago: '2 hours ago' },
+  { name: 'Sangeeta Devi',   city: 'Agra',       size: '60 Sq. Yd', project: 'Shree Ji Vatika', price: '₹5.40L', emoji: '🏠', ago: 'Just now' },
+  { name: 'Mukesh Gupta',    city: 'Noida',      size: '100 Sq. Yd',project: 'Shree Ji Vatika', price: '₹9.00L', emoji: '🏠', ago: '3 hours ago' },
+  { name: 'Sunita Rani',     city: 'Lucknow',    size: '50 Sq. Yd', project: 'Shree Ji Vatika', price: '₹4.50L', emoji: '🏠', ago: 'Today morning' },
+  { name: 'Pradeep Verma',   city: 'Mathura',    size: '150 Sq. Yd',project: 'Shree Ji Vatika', price: '₹13.50L', emoji: '🏠', ago: '1 day ago' },
+  { name: 'Kamla Devi',      city: 'Jaipur',     size: '60 Sq. Yd', project: 'Shree Ji Vatika', price: '₹5.40L', emoji: '🏠', ago: '5 hours ago' },
+  { name: 'Suresh Kumar',    city: 'Gurugram',   size: '100 Sq. Yd',project: 'Shree Ji Vatika', price: '₹9.00L', emoji: '🏠', ago: 'Yesterday' },
+  { name: 'Neetu Singh',     city: 'Faridabad',  size: '50 Sq. Yd', project: 'Shree Ji Vatika', price: '₹4.50L', emoji: '🏠', ago: '4 hours ago' }
 ];
 
-const plotTypes = [
-  { title: 'Commercial Plots', icon: '🏬', copy: 'High-visibility spaces for shops, offices, and showrooms on wide 40 feet roads.' },
-  { title: 'Residential Plots', icon: '🏡', copy: 'Thoughtfully planned plots (30, 50, 100, 120 sq. yards) for modern homes with neighborhood comfort.' },
-];
+const CFG = {
+  initialDelay: 3000,
+  displayDuration: 6000,
+  minInterval: 10000,
+  maxInterval: 25000,
+  waNumber: '918076146988',
+};
 
-const team = [
-  { name: 'Nitin Bhati', role: 'Founder', image: '/images/DSC_6632.JPG', initials: 'NB' },
-  { name: 'Rahul Bhati', role: 'Leadership Team', image: '/images/5x7=15 (2).jpg', initials: 'RB' },
-];
+const rand = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 
-document.querySelector('#root').innerHTML = `
-<main>
-  <div class="ambient-grid"></div>
-  <header class="nav glass-panel">
-    <a class="brand" href="#top"><span>SN</span> SN Developers</a>
-    <nav>
-      <a href="#overview">Overview</a>
-      <a href="#plots">Plots</a>
-      <a href="#location">Location</a>
-      <a class="nav-cta" href="#contact">Enquire Now</a>
-    </nav>
-  </header>
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = rand(0, i);
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+let notificationPool = shuffle(NOTIFICATIONS);
+let poolIndex = 0;
+
+// CSS for the toast injected dynamically
+const style = document.createElement('style');
+style.textContent = `
+  .sp-card {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    overflow: hidden;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.05);
+    width: 280px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    pointer-events: all;
+  }
   
-  <section id="top" class="hero">
-    <div class="hero-copy">
-      <p class="eyebrow">✦ Premium Plotted Society</p>
-      <h1>Shree Ji Vatika</h1>
-      <p class="lead">A modern plotted destination designed with elegant streetscapes, practical amenities, and a calm residential environment. A prestigious project by SN Developers.</p>
-      <div class="hero-actions">
-        <a class="button primary" href="#contact">Book a Site Visit</a>
-        <a class="button secondary" href="https://www.google.com/maps?q=27.641441,77.488289" target="_blank" rel="noreferrer">View on Google Maps</a>
+  .sp-card.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .sp-accent {
+    height: 4px;
+    background: linear-gradient(90deg, #0F3A5F, #D4AF37);
+  }
+
+  .sp-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #9ca3af;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .sp-close:hover { background: #f3f4f6; color: #374151; }
+
+  .sp-body {
+    padding: 12px;
+  }
+
+  .sp-top {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+  
+  .sp-proj { color: #0F3A5F; }
+  .sp-ago { color: #9ca3af; font-weight: normal; }
+
+  .sp-msg {
+    font-size: 13px;
+    color: #374151;
+    margin: 0 0 8px 0;
+  }
+
+  .sp-msg strong {
+    color: #111827;
+  }
+
+  .sp-detail {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .sp-chip {
+    background: #EFF6FF;
+    color: #0F3A5F;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 700;
+  }
+
+  .sp-price {
+    font-size: 14px;
+    font-weight: 800;
+    color: #15803d;
+  }
+
+  .sp-foot {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    border-top: 1px solid #f3f4f6;
+    background: #fafafa;
+  }
+  
+  .sp-foot-text {
+    font-size: 10px;
+    color: #6b7280;
+  }
+  
+  .sp-wa-btn {
+    background: #16a34a;
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+  }
+  .sp-wa-btn:hover { background: #15803d; }
+`;
+document.head.appendChild(style);
+
+function showNextNotification() {
+  if (poolIndex >= notificationPool.length) {
+    notificationPool = shuffle(NOTIFICATIONS);
+    poolIndex = 0;
+  }
+  
+  const data = notificationPool[poolIndex++];
+  const container = document.getElementById('toast-container');
+  
+  // Clear any existing toasts
+  container.innerHTML = '';
+  
+  const waText = `I am interested in ${data.size} plot in ${data.project}`;
+  const waUrl = `https://wa.me/${CFG.waNumber}?text=${encodeURIComponent(waText)}`;
+  
+  const card = document.createElement('div');
+  card.className = 'sp-card';
+  card.innerHTML = `
+    <div class="sp-accent"></div>
+    <button class="sp-close" onclick="this.parentElement.remove()">✕</button>
+    <div class="sp-body">
+      <div class="sp-top">
+        <span>${data.emoji}</span>
+        <span class="sp-proj">${data.project}</span>
+        <span style="color:#d1d5db">•</span>
+        <span class="sp-ago">${data.ago}</span>
       </div>
-      <div class="stats glass-panel">
-        <span><strong>Mathura</strong> Location</span>
-        <span><strong>30 - 414</strong> Sq.Yards</span>
-        <span><strong>EMI</strong> Available</span>
+      <p class="sp-msg">
+        <strong>${data.name}</strong> from ${data.city} just booked a plot!
+      </p>
+      <div class="sp-detail">
+        <span class="sp-chip">${data.size}</span>
+        <span class="sp-price">${data.price}</span>
       </div>
     </div>
-    
-    <div class="visual-wrap">
-      <div class="plot-board">
-        <div class="sun"></div>
-        <div class="road"></div>
-        <div class="plot-lines">
-          <i></i><i></i><i></i><i></i><i></i><i></i>
-          <i></i><i></i><i></i>
-        </div>
-        <div class="model tree tree-1"></div>
-        <div class="model tree tree-2"></div>
-        <div class="model tree tree-3"></div>
-        <div class="model house"></div>
-      </div>
-      <div class="floating-badge badge-1">🌿 Lush Green Parks</div>
-      <div class="floating-badge badge-2">🛣️ 40FT Wide Roads</div>
+    <div class="sp-foot">
+      <span class="sp-foot-text">Want to book yours?</span>
+      <a href="${waUrl}" target="_blank" class="sp-wa-btn">💬 Inquire</a>
     </div>
-  </section>
+  `;
   
-  <section id="overview" class="section split">
-    <div>
-      <p class="eyebrow">Project overview</p>
-      <h2>Built for lifestyle and long-term value.</h2>
-    </div>
-    <p>Shree Ji Vatika brings residential comfort and commercial opportunity together in one carefully planned plotted layout. Enjoy club house access, swimming pools, wide roads, and easy connectivity to major landmarks in Mathura and Vrindavan. Developed exclusively by SN Developers.</p>
-  </section>
+  container.appendChild(card);
   
-  <section id="plots" class="section">
-    <p class="eyebrow">Commercial & Residential Plots</p>
-    <h2>Choose the plot size that fits your vision.</h2>
-    <div class="card-grid two">
-      ${plotTypes.map(({title, icon, copy}) => `
-        <article class="feature-card">
-          <div class="card-icon">${icon}</div>
-          <h3>${title}</h3>
-          <p>${copy}</p>
-        </article>
-      `).join('')}
-    </div>
-  </section>
+  // Trigger animation
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      card.classList.add('show');
+    });
+  });
   
-  <section class="section">
-    <p class="eyebrow">Amenities</p>
-    <h2>Everyday essentials in a premium environment.</h2>
-    <div class="amenities">
-      ${amenities.map((item) => `<div class="amenity-item"><b>✓</b> ${item}</div>`).join('')}
-    </div>
-  </section>
+  // Remove after displayDuration
+  setTimeout(() => {
+    card.classList.remove('show');
+    setTimeout(() => {
+      if (container.contains(card)) {
+        card.remove();
+      }
+    }, 400); // Wait for transition
+  }, CFG.displayDuration);
   
-  <section class="section team">
-    <p class="eyebrow">👥 Our Founders</p>
-    <h2>Meet the visionaries behind SN Developers.</h2>
-    <div class="card-grid two">
-      ${team.map(({name, role, image, initials}) => `
-        <div class="founder-card">
-          <div class="founder-avatar">
-            <img src="${image}" alt="${name}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 100 100\\'><rect width=\\'100\\' height=\\'100\\' fill=\\'%23185235\\'/><text x=\\'50\\' y=\\'55\\' font-size=\\'30\\' font-family=\\'Arial\\' fill=\\'white\\' text-anchor=\\'middle\\' alignment-baseline=\\'middle\\'>${initials}</text></svg>'">
-          </div>
-          <div>
-            <h3>${name}</h3>
-            <p>${role}</p>
-          </div>
-        </div>
-      `).join('')}
-    </div>
-  </section>
-  
-  <section id="location" class="section split">
-    <div>
-      <p class="eyebrow">📍 Location</p>
-      <h2>Navigate directly to Shree Ji Vatika.</h2>
-      <p>Coordinates: <strong>27°38'29.2"N, 77°29'17.8"E (27.641441, 77.488289)</strong></p>
-      <p>Close to Govardhan Railway Station, Prem Mandir, and Yamuna Expressway.</p>
-    </div>
-    <div class="map-container">
-      <iframe title="Shree Ji Vatika Google Map" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=27.641441,77.488289&z=15&output=embed"></iframe>
-    </div>
-  </section>
-  
-  <section id="contact" class="cta-section">
-    <p class="eyebrow" style="color: rgba(255,255,255,0.8);">Ready to secure your plot?</p>
-    <h2>Book your visit to Shree Ji Vatika today.</h2>
-    <p>Speak with SN Developers for availability, pricing, site visits, and our flexible 12 to 24-month interest-free payment plans.</p>
-    <a class="button primary" href="tel:+910000000000">Call SN Developers</a>
-  </section>
-</main>`;
+  // Schedule next
+  const nextDelay = rand(CFG.minInterval, CFG.maxInterval);
+  setTimeout(showNextNotification, nextDelay);
+}
+
+// Start notifications loop
+setTimeout(showNextNotification, CFG.initialDelay);
