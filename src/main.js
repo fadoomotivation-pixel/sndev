@@ -1,19 +1,19 @@
 const NOTIFICATIONS = [
-  { name: 'Rahul Sharma',    city: 'Delhi',      size: '50 Sq. Yd', project: 'Shree Jee Vatika', price: '₹8.00L', emoji: '🏠', ago: '2 hours ago' },
-  { name: 'Sangeeta Devi',   city: 'Agra',       size: '97.25 Sq. Yd', project: 'Shree Jee Vatika', price: '₹15.52L', emoji: '🏠', ago: 'Just now' },
-  { name: 'Mukesh Gupta',    city: 'Noida',      size: '100 Sq. Yd',project: 'Shree Jee Vatika', price: '₹16.00L', emoji: '🏠', ago: '3 hours ago' },
-  { name: 'Sunita Rani',     city: 'Lucknow',    size: '50 Sq. Yd', project: 'Shree Jee Vatika', price: '₹8.00L', emoji: '🏠', ago: 'Today morning' },
-  { name: 'Pradeep Verma',   city: 'Mathura',    size: '150 Sq. Yd',project: 'Shree Jee Vatika', price: '₹24.00L', emoji: '🏠', ago: '1 day ago' },
-  { name: 'Kamla Devi',      city: 'Jaipur',     size: '236 Sq. Yd', project: 'Shree Jee Vatika', price: '₹37.76L', emoji: '🏠', ago: '5 hours ago' },
-  { name: 'Suresh Kumar',    city: 'Gurugram',   size: '100 Sq. Yd',project: 'Shree Jee Vatika', price: '₹16.00L', emoji: '🏠', ago: 'Yesterday' },
-  { name: 'Neetu Singh',     city: 'Faridabad',  size: '50 Sq. Yd', project: 'Shree Jee Vatika', price: '₹8.00L', emoji: '🏠', ago: '4 hours ago' }
+  { name: 'Praveen K.',      city: 'Delhi',      size: '50 Sq. Yd', project: 'Shree Jee Vatika', action: 'scheduled a site visit', emoji: '📅', ago: '10 mins ago' },
+  { name: 'Sangeeta D.',     city: 'Agra',       size: '97.25 Sq. Yd', project: 'Shree Jee Vatika', action: 'just booked a plot', emoji: '🎉', ago: 'Just now' },
+  { name: 'Mukesh G.',       city: 'Noida',      size: '100 Sq. Yd',project: 'Shree Jee Vatika', action: 'requested pricing details', emoji: '💬', ago: '1 hour ago' },
+  { name: 'Sunita R.',       city: 'Lucknow',    size: '150 Sq. Yd', project: 'Shree Jee Vatika', action: 'booked a premium plot', emoji: '🏠', ago: '2 hours ago' },
+  { name: 'Anil V.',         city: 'Mathura',    size: '50 Sq. Yd', project: 'Shree Jee Vatika', action: 'scheduled a site visit', emoji: '📅', ago: '15 mins ago' },
+  { name: 'Kamla D.',        city: 'Jaipur',     size: '236 Sq. Yd', project: 'Shree Jee Vatika', action: 'is interested in estate plots', emoji: '👀', ago: '3 hours ago' },
+  { name: 'Suresh K.',       city: 'Gurugram',   size: '100 Sq. Yd',project: 'Shree Jee Vatika', action: 'just booked a plot', emoji: '🎉', ago: 'Yesterday' },
+  { name: 'Neetu S.',        city: 'Faridabad',  size: '50 Sq. Yd', project: 'Shree Jee Vatika', action: 'requested pricing details', emoji: '💬', ago: '20 mins ago' }
 ];
 
 const CFG = {
-  initialDelay: 3000,
+  initialDelay: 2000,
   displayDuration: 6000,
-  minInterval: 10000,
-  maxInterval: 25000,
+  minInterval: 12000,
+  maxInterval: 18000,
   waNumber: '918076146988',
 };
 
@@ -199,11 +199,10 @@ function showNextNotification() {
         <span class="sp-ago">${data.ago}</span>
       </div>
       <p class="sp-msg">
-        <strong>${data.name}</strong> from ${data.city} just booked a plot!
+        <strong>${data.name}</strong> from ${data.city} ${data.action}!
       </p>
       <div class="sp-detail">
         <span class="sp-chip">${data.size}</span>
-        <span class="sp-price">${data.price}</span>
       </div>
     </div>
     <div class="sp-foot">
