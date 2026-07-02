@@ -59,7 +59,7 @@ export default function HeroSection() {
           <a href="#projects" className="px-10 py-4 bg-[#CDA85A] text-[#10243E] font-bold uppercase tracking-widest text-sm hover:bg-white transition-colors duration-300">
             Explore Plots
           </a>
-          <a href="https://wa.me/918076146988" target="_blank" className="px-10 py-4 bg-transparent border border-white/30 text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-[#10243E] transition-colors duration-300">
+          <a href="https://wa.me/917678122463" target="_blank" className="px-10 py-4 bg-transparent border border-white/30 text-white font-bold uppercase tracking-widest text-sm hover:bg-white hover:text-[#10243E] transition-colors duration-300">
             Contact Us
           </a>
         </motion.div>

@@ -31,7 +31,7 @@ export default function StickyCTA() {
           className="fixed bottom-8 right-8 z-[9999]"
         >
           <a
-            href="https://wa.me/918076146988"
+            href="https://wa.me/917678122463"
             target="_blank"
             rel="noopener noreferrer"
             className="group flex items-center justify-center w-16 h-16 bg-[#10243E] rounded-full shadow-2xl hover:scale-110 transition-transform duration-300 border border-[#CDA85A]/30 relative"

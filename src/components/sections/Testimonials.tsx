@@ -7,7 +7,7 @@ import Image from "next/image";
 
 const testimonials = [
   {
-    name: "Dr. Arvind Mehta",
+    name: "Dr. Vikas gupta",
     location: "New Delhi",
     text: "The completely transparent process and the instant CCTV access to my plot gave me absolute peace of mind. Truly a premium experience.",
     rating: 5,

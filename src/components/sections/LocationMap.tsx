@@ -56,7 +56,7 @@ export default function LocationMap() {
           <div className="lg:w-1/2 w-full">
             <div className="relative w-full h-[400px] md:h-[500px] bg-gray-100 rounded-3xl overflow-hidden shadow-2xl border border-gray-200">
               <iframe 
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x39736ce47bffc039%3A0xfe5ea3dc7368bfac!2sMathura%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                src="https://maps.google.com/maps?q=Mathura&t=&z=13&ie=UTF8&iwloc=&output=embed" 
                 width="100%" 
                 height="100%" 
                 style={{ border: 0, filter: 'grayscale(0.5) contrast(1.1) opacity(0.9)' }} 

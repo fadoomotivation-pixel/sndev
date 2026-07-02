@@ -115,7 +115,7 @@ export default function AIAssistant() {
                   <strong className="text-[#CDA85A]"> Signature Corner Lots</strong>. 
                 </p>
                 <a 
-                  href={`https://wa.me/918076146988?text=Hi! My AI match recommended a ${preferences.purpose} plot of ${preferences.budget} size.`}
+                  href={`https://wa.me/917678122463?text=Hi! My AI match recommended a ${preferences.purpose} plot of ${preferences.budget} size.`}
                   target="_blank"
                   className="px-10 py-4 bg-[#CDA85A] text-[#10243E] font-bold uppercase tracking-widest hover:bg-white transition-colors rounded-xl"
                 >
