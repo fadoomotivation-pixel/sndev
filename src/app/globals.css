@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #10243E; /* Deep Navy */
+  --color-secondary: #CDA85A; /* Premium Gold */
+  --color-secondary-hover: #b89345;
+  --color-background: #ffffff; /* White Luxury */
+  
+  --font-manrope: var(--font-manrope);
+  --font-inter: var(--font-inter);
+}
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #10243E;
+  }
+  
+  html {
+    scroll-behavior: initial; /* Lenis handles smooth scroll */
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), sans-serif;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-manrope), sans-serif;
+  }
+}
+
+/* Lenis smooth scroll */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Glassmorphism */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.glass-dark {
+  background: rgba(16, 36, 62, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(205, 168, 90, 0.2);
+}
