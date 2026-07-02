@@ -17,12 +17,12 @@ export default function Home() {
     <main className="min-h-screen bg-white">
       <HeroSection />
       <StatsSection />
-      <FounderVision />
       <FeaturedProjects />
       <LocationMap />
       <ROICalculator />
       <Timeline />
       <Testimonials />
+      <FounderVision />
       <AIAssistant />
       <Awards />
       <FAQ />
