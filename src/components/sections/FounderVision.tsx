@@ -16,7 +16,7 @@ export default function FounderVision() {
     },
     {
       name: "Mr. Nitin Bhati",
-      title: "Co-Founder & Director",
+      title: "Founder",
       image: "/images/nitin_bhati.png"
     }
   ];
