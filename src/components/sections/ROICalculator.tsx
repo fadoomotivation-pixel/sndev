@@ -9,7 +9,7 @@ export default function ROICalculator() {
   const [years, setYears] = useState(5);
   const [appreciationRate, setAppreciationRate] = useState(12);
 
-  const baseRate = 16000;
+  const baseRate = 15000;
   const initialInvestment = plotSize * baseRate;
   const futureValue = initialInvestment * Math.pow(1 + appreciationRate / 100, years);
   const totalProfit = futureValue - initialInvestment;

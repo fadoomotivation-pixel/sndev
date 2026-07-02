@@ -7,27 +7,27 @@ const projects = [
   {
     title: "50 Sq. Yards",
     dimensions: "18 x 25 Dimensions",
-    price: "₹8,00,000",
-    booking: "₹2,40,000",
-    emi12: "₹46,666",
-    emi24: "₹23,333",
+    price: "₹7,50,000",
+    booking: "₹2,25,000",
+    emi12: "₹43,750",
+    emi24: "₹21,875",
   },
   {
     title: "100 Sq. Yards",
     dimensions: "20 x 45 Dimensions",
-    price: "₹16,00,000",
-    booking: "₹480,000",
-    emi12: "₹93,333",
-    emi24: "₹46,666",
+    price: "₹15,00,000",
+    booking: "₹4,50,000",
+    emi12: "₹87,500",
+    emi24: "₹43,750",
     featured: true,
   },
   {
     title: "150 Sq. Yards",
     dimensions: "30 x 45 Dimensions",
-    price: "₹24,00,000",
-    booking: "₹720,000",
-    emi12: "₹140,000",
-    emi24: "₹70,000",
+    price: "₹22,50,000",
+    booking: "₹6,75,000",
+    emi12: "₹1,31,250",
+    emi24: "₹65,625",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function FeaturedProjects() {
           </h2>
           
           <div className="inline-flex flex-col sm:flex-row items-center gap-4 sm:gap-8 bg-white px-8 py-4 rounded-full shadow-lg border border-gray-100">
-            <span className="text-lg">Base Rate: <strong className="text-[#10243E]">₹16,000 / Sq. Yd</strong></span>
+            <span className="text-lg">Base Rate: <strong className="text-[#10243E]">₹15,000 / Sq. Yd</strong></span>
             <span className="hidden sm:block text-gray-300">|</span>
             <span className="text-lg">Booking: <strong className="text-[#CDA85A]">30% Upfront</strong></span>
           </div>
