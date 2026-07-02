@@ -113,7 +113,7 @@ export default function ROICalculator() {
                   key={futureValue}
                   initial={{ opacity: 0, scale: 0.9 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-5xl md:text-6xl font-black text-[#CDA85A]"
+                  className="text-4xl sm:text-5xl md:text-6xl font-black text-[#CDA85A] break-words"
                 >
                   {formatCurrency(futureValue)}
                 </motion.p>
