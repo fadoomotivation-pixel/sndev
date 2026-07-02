@@ -8,19 +8,19 @@ const posts = [
   {
     title: "Why Mathura-Vrindavan is the Next Big Real Estate Hotspot",
     category: "Market Insights",
-    image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600&auto=format&fit=crop",
     date: "July 2026",
   },
   {
     title: "Understanding 80c Approval and Legal Compliance in Plotting",
     category: "Investment Guide",
-    image: "https://images.unsplash.com/photo-1554469384-e58fac16e23a?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1589829085413-56de8ae18c73?q=80&w=600&auto=format&fit=crop",
     date: "June 2026",
   },
   {
     title: "The Airport Metro Project: Impact on Local Property Values",
     category: "Infrastructure",
-    image: "https://images.unsplash.com/photo-1541888086925-920a0b411933?q=80&w=600&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=600&auto=format&fit=crop",
     date: "May 2026",
   }
 ];

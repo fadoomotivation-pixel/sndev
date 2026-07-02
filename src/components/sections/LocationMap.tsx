@@ -54,19 +54,17 @@ export default function LocationMap() {
           </div>
 
           <div className="lg:w-1/2 w-full">
-            <div className="relative w-full aspect-square md:aspect-video lg:aspect-square bg-gray-100 rounded-3xl overflow-hidden shadow-2xl border border-gray-200 group">
-              <div className="absolute inset-0 bg-[url('https://maps.googleapis.com/maps/api/staticmap?center=27.6046,77.5303&zoom=11&size=800x800&maptype=roadmap&style=feature:all|element:geometry.fill|color:0xf4f4f4&style=feature:landscape.man_made|element:geometry.fill|color:0xececec&style=feature:poi|element:geometry.fill|color:0xd3eadb&style=feature:road|element:geometry.fill|color:0xffffff&style=feature:road|element:geometry.stroke|color:0xe0e0e0&style=feature:water|element:geometry.fill|color:0xa3ccff&key=YOUR_API_KEY_HERE')] bg-cover bg-center transition-transform duration-1000 group-hover:scale-105"></div>
-              
-              {/* Fake Interactive Map Pins for aesthetics since API key is missing */}
-              <div className="absolute top-[40%] left-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
-                <div className="bg-[#10243E] text-white px-4 py-2 rounded-lg font-bold text-sm shadow-xl mb-2 whitespace-nowrap border border-[#CDA85A]">
-                  Shree Jee Vatika
-                </div>
-                <div className="text-[#CDA85A] drop-shadow-lg animate-bounce">
-                  <MapPin size={40} fill="#10243E" />
-                </div>
-              </div>
-              
+            <div className="relative w-full h-[400px] md:h-[500px] bg-gray-100 rounded-3xl overflow-hidden shadow-2xl border border-gray-200">
+              <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m2!1s0x39736ce47bffc039%3A0xfe5ea3dc7368bfac!2sMathura%2C%20Uttar%20Pradesh!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                width="100%" 
+                height="100%" 
+                style={{ border: 0, filter: 'grayscale(0.5) contrast(1.1) opacity(0.9)' }} 
+                allowFullScreen 
+                loading="lazy" 
+                referrerPolicy="no-referrer-when-downgrade"
+                className="absolute inset-0"
+              ></iframe>
               <div className="absolute inset-0 border-[8px] border-white/20 rounded-3xl pointer-events-none"></div>
             </div>
           </div>

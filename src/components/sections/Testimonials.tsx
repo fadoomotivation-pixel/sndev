@@ -11,21 +11,21 @@ const testimonials = [
     location: "New Delhi",
     text: "The completely transparent process and the instant CCTV access to my plot gave me absolute peace of mind. Truly a premium experience.",
     rating: 5,
-    videoThumbnail: "https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=600&auto=format&fit=crop",
+    videoThumbnail: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600&auto=format&fit=crop",
   },
   {
     name: "Mrs. Kavita Singh",
     location: "Gurugram",
     text: "Being just 15 minutes from Prem Mandir was the deciding factor. The 40-foot entrance is stunning. A world-class township.",
     rating: 5,
-    videoThumbnail: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=600&auto=format&fit=crop",
+    videoThumbnail: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?q=80&w=600&auto=format&fit=crop",
   },
   {
     name: "Rajiv & Sunita Sharma",
     location: "Noida",
     text: "0% Interest EMIs and guaranteed firm registry made our decision effortless. SN Developers delivered exactly what they promised.",
     rating: 5,
-    videoThumbnail: "https://images.unsplash.com/photo-1516383740770-fbcc5ccbece0?q=80&w=600&auto=format&fit=crop",
+    videoThumbnail: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600&auto=format&fit=crop",
   }
 ];
 
