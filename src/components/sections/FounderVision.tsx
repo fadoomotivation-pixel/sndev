@@ -11,12 +11,12 @@ export default function FounderVision() {
   const founders = [
     {
       name: "Mr. Rahul Goud",
-      title: "Founder & Director",
+      title: "Co-Founder",
       image: "/images/rahul_bhati.jpg"
     },
     {
       name: "Mr. Nitin Bhati",
-      title: "Founder",
+      title: "Founder & Director",
       image: "/images/nitin_bhati.png"
     }
   ];
