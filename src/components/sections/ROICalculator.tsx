@@ -36,7 +36,7 @@ export default function ROICalculator() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center bg-gray-50 p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center bg-gray-50 p-5 sm:p-8 md:p-12 rounded-3xl border border-gray-100 shadow-xl overflow-hidden">
           {/* Controls */}
           <div className="lg:col-span-5 space-y-10">
             <div>
@@ -93,11 +93,11 @@ export default function ROICalculator() {
           </div>
 
           {/* Results */}
-          <div className="lg:col-span-7 relative">
-            <div className="absolute inset-0 bg-gradient-to-br from-[#10243E] to-[#0c1a2d] rounded-2xl transform rotate-2 scale-105 opacity-10"></div>
+          <div className="lg:col-span-7 relative w-full">
+            <div className="hidden sm:block absolute inset-0 bg-gradient-to-br from-[#10243E] to-[#0c1a2d] rounded-2xl transform rotate-2 scale-105 opacity-10"></div>
             <motion.div 
               layout
-              className="relative bg-[#10243E] text-white p-8 md:p-10 rounded-2xl shadow-2xl"
+              className="relative bg-[#10243E] text-white p-6 sm:p-8 md:p-10 rounded-2xl shadow-2xl w-full"
             >
               <div className="flex items-center justify-between mb-8 pb-8 border-b border-white/10">
                 <div>

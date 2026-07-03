@@ -19,13 +19,17 @@ export default function Footer() {
             </ul>
           </div>
           <div>
-            <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-[#CDA85A]">Legal</h4>
-            <ul className="space-y-4 text-sm text-white/60">
-              <li>Privacy Policy</li>
-              <li>Terms of Service</li>
-              <li>80c Approval Documents</li>
-              <li>Firm Registry Details</li>
-            </ul>
+            <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-[#CDA85A]">Get In Touch</h4>
+            <div className="space-y-4 text-sm text-white/60">
+              <p className="leading-relaxed">
+                A-963, JC Tower, First Floor, Chawla Colony, 100 Feet Road, Ballabhgarth, 121004
+              </p>
+              <p>
+                <a href="https://wa.me/917678122463" target="_blank" className="hover:text-white transition-colors">
+                  WhatsApp: +91 76781 22463
+                </a>
+              </p>
+            </div>
           </div>
           <div>
             <h4 className="text-sm font-bold uppercase tracking-widest mb-6 text-[#CDA85A]">Newsletter</h4>
@@ -39,7 +43,11 @@ export default function Footer() {
         
         <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
           <p>&copy; {new Date().getFullYear()} SN Developers. All rights reserved.</p>
-          <p>Designed for Luxury.</p>
+          <div className="flex gap-4">
+            <span>80c Approved</span>
+            <span>|</span>
+            <span>Firm Registry</span>
+          </div>
         </div>
       </div>
     </footer>
